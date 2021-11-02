@@ -109,4 +109,5 @@ int main(){
 
     cout << ll.pop(1) << "\n";
     cout << ll.pop(1) << "\n";
+    cout << ll.pop(0) << "\n";
 }
