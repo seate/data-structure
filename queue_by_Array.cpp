@@ -5,27 +5,33 @@ template<typename T>
 class Queue{
 private:
     int Maxsize;
-    int idx;
+    int curidx;
     T *queue;
 
 public:
-    Queue(int Maxsize){
-        idx = -1;
+    Queue(int size){
+        Maxsize = size;
+        curidx = -1;
         queue = new T[Maxsize];
     }
 
-    bool isEmpty(){return (idx == -1);}
+    bool isEmpty(){return (curidx == -1);}
 
-    bool isFull(){return (idx == Maxsize - 1);}
+    bool isFull(){return (curidx == Maxsize - 1);}
 
     void add(T data){
         if (isFull()) cout << "queue is Full\n";
-        else queue[++idx] = data;
+        else queue[++curidx] = data;
     }
 
     T pop(){
         if (isEmpty()) cout << "queue is Empty\n";
-        else return queue[idx--];
+        else{
+            T temp = queue[0];
+            for (int i = 0; i < curidx; i++) queue[i] = queue[i + 1];
+            curidx--;
+            return temp;
+        }
     }
 };
 
@@ -45,5 +51,9 @@ int main(){
 
     cout << "q.isEmpty(): " << q.isEmpty() << "\n";
     cout << "q.isFull(): " << q.isFull() << "\n";
+    cout << "q.pop(): " << q.pop() << "\n";
+    cout << "q.pop(): " << q.pop() << "\n";
+    cout << "q.pop(): " << q.pop() << "\n";
+    cout << "q.pop(): " << q.pop() << "\n";
     cout << "q.pop(): " << q.pop() << "\n";
 }
