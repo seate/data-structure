@@ -81,6 +81,12 @@ public:
         }
     }
 
+    Node<T> *operator[](int idx){
+        Node<T> *temp = head;
+        for (int i = 0; i < idx; i++) temp = temp->next;
+        return temp;
+    }
+
     void Print(){
         Node<T> *temp = head;
         
@@ -90,8 +96,6 @@ public:
         }
         cout << "\n";
     }
-
-
 };
 
 int main(){
@@ -107,7 +111,9 @@ int main(){
     ll.add(789, 2);
     ll.Print();
 
+    cout << ll[1]->data << "qwe\n";
     cout << ll.pop(1) << "\n";
     cout << ll.pop(1) << "\n";
-    cout << ll.pop(0) << "\n";
+
+    
 }
